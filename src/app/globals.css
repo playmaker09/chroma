@@ -1,26 +1,349 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e4e4e4;
+  --foreground: #0b1220;
+  --heading: #135e8d;
+  --muted: #5c6470;
+  --surface: #ffffff;
+  --surface-muted: #ececec;
+  --border: rgba(11, 18, 32, 0.08);
+  --glow-a: rgba(186, 210, 255, 0.65);
+  --glow-b: rgba(200, 230, 215, 0.55);
+  --glow-c: rgba(214, 200, 255, 0.5);
+  --glow-services: rgba(167, 139, 250, 0.22);
+  --shadow: 0 18px 50px rgba(11, 18, 32, 0.06);
+  --nav-bg: #252d3b;
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-link: rgba(255, 255, 255, 0.78);
+  --nav-link-hover: #ffffff;
+  --nav-link-active-bg: #101828;
+  --nav-link-active-fg: #ffffff;
+  --cta-bg: var(--nav-link-active-bg);
+  --cta-fg: #f5f6f8;
+  --btn-primary-bg: #0b1220;
+  --btn-primary-fg: #ffffff;
+  --btn-outline-border: rgba(11, 18, 32, 0.18);
+  --gradient-heading-start: #2563eb;
+  --gradient-heading-end: #7c3aed;
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(11, 18, 32, 0.08);
+}
+
+.dark {
+  --background: #07080c;
+  --foreground: #f4f5f7;
+  --heading: #f4f5f7;
+  --muted: #9aa1af;
+  --surface: #111318;
+  --surface-muted: #16181f;
+  --border: rgba(255, 255, 255, 0.08);
+  --glow-a: rgba(45, 212, 191, 0.14);
+  --glow-b: rgba(99, 102, 241, 0.2);
+  --glow-c: rgba(14, 165, 233, 0.12);
+  --glow-services: rgba(99, 102, 241, 0.15);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --nav-bg: #252d3b;
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --cta-bg: var(--nav-link-active-bg);
+  --cta-fg: #f5f6f8;
+  --btn-primary-bg: #1c1f27;
+  --btn-primary-fg: #ffffff;
+  --btn-outline-border: rgba(255, 255, 255, 0.22);
+  --gradient-heading-start: #93c5fd;
+  --gradient-heading-end: #c4b5fd;
+  --glass-bg: rgba(17, 19, 24, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-cta-bg: var(--cta-bg);
+  --color-cta-fg: var(--cta-fg);
+  --font-sans: var(--font-poppins);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+}
+
+.page-glow {
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 12%, var(--glow-a), transparent 58%),
+    radial-gradient(ellipse 50% 45% at 82% 38%, var(--glow-b), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 12% 42%, var(--glow-c), transparent 52%);
+}
+
+.section-glow-services {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, var(--glow-services), transparent 65%),
+    var(--background);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.glass-card {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.38) 55%,
+    rgba(255, 255, 255, 0.28) 100%
+  );
+  box-shadow:
+    0 8px 32px rgba(11, 18, 32, 0.08),
+    0 2px 8px rgba(11, 18, 32, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+}
+
+.dark .glass-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(17, 19, 24, 0.52) 50%,
+    rgba(17, 19, 24, 0.62) 100%
+  );
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(40px) saturate(140%);
+  -webkit-backdrop-filter: blur(40px) saturate(140%);
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 32px;
+  padding: 48px 20px 64px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-copy {
+    padding: 80px 40px 72px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-copy {
+    padding: 120px 80px 100px;
+  }
+}
+
+.pillar-card {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.05),
+    0 12px 40px rgba(11, 18, 32, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -12px 24px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(64px) saturate(200%);
+  -webkit-backdrop-filter: blur(64px) saturate(200%);
+}
+
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.08) 42%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.pillar-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dark .pillar-card {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(17, 19, 24, 0.28);
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.25),
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14),
+    inset 0 -12px 24px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(64px) saturate(160%);
+  -webkit-backdrop-filter: blur(64px) saturate(160%);
+}
+
+.dark .pillar-card::before {
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 42%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.pillar-card-title {
+  color: var(--heading);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-transform: uppercase;
+}
+
+.pillar-card-subtitle {
+  color: var(--heading);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.pillar-card-body {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.gradient-heading {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-heading-start),
+    var(--gradient-heading-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+}
+
+.btn-outline {
+  border: 1px solid var(--btn-outline-border);
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.btn-outline-brand {
+  border: 1px solid var(--heading);
+  background: var(--surface);
+  color: var(--heading);
+}
+
+.btn-outline-brand:hover {
+  background: rgba(19, 94, 141, 0.06);
+}
+
+.btn-ghost {
+  color: var(--foreground);
+}
+
+.btn-ghost:hover {
+  opacity: 0.75;
+}
+
+.explore-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--heading);
+}
+
+.explore-link:hover {
+  opacity: 1;
+}
+
+.text-heading {
+  color: var(--heading);
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes hero-float-alt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.hero-device-float,
+.hero-device-float-delay-1,
+.hero-device-float-delay-2 {
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.hero-device-float {
+  animation: hero-float 5.5s ease-in-out infinite;
+}
+
+.hero-device-float-delay-1 {
+  animation: hero-float-alt 6.25s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.hero-device-float-delay-2 {
+  animation: hero-float 5.75s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-device-float,
+  .hero-device-float-delay-1,
+  .hero-device-float-delay-2 {
+    animation: none;
+  }
 }
