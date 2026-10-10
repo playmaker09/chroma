@@ -26,14 +26,14 @@ const pillars = [
 export function Hero() {
   return (
     <section className="page-glow relative overflow-hidden">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-5 pb-16 pt-[120px] lg:px-20 md:pb-20 md:gap-14">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-8 px-5 pb-6 pt-24 sm:gap-10 sm:pb-8 md:gap-14 md:pb-16 md:pt-[120px] lg:px-20">
         <HeroLogo />
         <HeroVisual />
       </div>
 
-      <div className="mx-auto w-full max-w-[1440px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px]">
         <div className="hero-copy">
-          <h1 className="text-heading mx-auto max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">
+          <h1 className="text-heading mx-auto max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl md:text-6xl">
             Complex Problems.
             <br />
             Elegant Systems.
@@ -47,7 +47,7 @@ export function Hero() {
           <HeroActions />
         </div>
 
-        <div className="flex flex-col gap-6 px-5 pb-16 text-left md:flex-row md:gap-8 md:px-10 md:pb-20 lg:px-20 lg:pb-20">
+        <div className="flex flex-col gap-4 px-5 pb-12 text-left sm:gap-5 md:flex-row md:gap-8 md:px-10 md:pb-20 lg:px-20 lg:pb-20">
           {pillars.map((pillar) => (
             <article key={pillar.title} className="pillar-card">
               <h2 className="pillar-card-title">{pillar.title}</h2>

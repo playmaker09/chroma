@@ -77,7 +77,7 @@ export function Services() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="glass-card relative min-h-[220px] p-6 pb-12"
+              className="glass-card relative p-6 pb-14 md:min-h-[220px] md:pb-12"
             >
               <div className="text-muted">
                 <service.Icon />
