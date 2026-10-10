@@ -7,7 +7,7 @@ export function About() {
           A product studio for serious software.
         </h2>
         <p className="max-w-lg text-base leading-7 text-muted">
-          Based in Taguig, Chroma partners with founders and operators to design, build, and
+          Based in Taguig and QC, Philippines, Chroma partners with founders and operators to design, build, and
           modernize digital products. We care about craft, but we care more about systems that
           keep working when the problems get harder.
         </p>
