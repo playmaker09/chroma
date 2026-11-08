@@ -35,7 +35,7 @@ const contactGroups = [
 export default function ContactPage() {
   return (
     <section className="page-glow">
-      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-16 md:grid-cols-[0.9fr_1.1fr] md:items-start md:px-8 md:py-24">
+      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <aside className="glass-card p-6 md:p-8">
           <h1 className="text-heading text-2xl font-semibold tracking-tight">Contact Information</h1>
           <p className="mt-3 text-sm leading-6 text-muted">
@@ -68,7 +68,9 @@ export default function ContactPage() {
             ))}
           </ul>
         </aside>
-        <ContactForm />
+        <div className="hidden lg:block">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );
